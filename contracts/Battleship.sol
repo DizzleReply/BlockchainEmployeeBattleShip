@@ -10,10 +10,19 @@ contract Battleship {
     uint256 timePerMove;
 
     // Ships
-    struct Ships {
+    struct Ship {
         string name;
         uint256 size;
+        bool sink;
     }
+
+    // Players
+    struct Player {
+        address playerAddress;
+        mapping(uint256 => Ship) ships;
+    }
+
+    // Game
 
     // State
 
