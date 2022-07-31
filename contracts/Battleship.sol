@@ -8,7 +8,12 @@ contract Battleship {
 
     // CONSTANTS
     uint256 timePerMove;
+    uint256 timePerMove;
+    uint256 timePerMove;
+    uint256 timePerMove;
 
+    uint256 timePerMove;
+    uint256 timePerMove;
     // Ships
     struct Ship {
         string name;
@@ -23,6 +28,9 @@ contract Battleship {
     }
 
     // Game
+    function setRandomShips() {
+        for (uint256 field = 0; field < 10; field++) {}
+    }
 
     // State
 
