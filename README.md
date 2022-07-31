@@ -3,12 +3,12 @@
 A blockchain based Battleship game as template for the CS Dashboard
 
 Migrate Contract
-```console 
+```sh 
 truffle migrate  
 ``` 
 
 Deploy Contract in dev mode
-```console
+```sh
 truffle develop
 
 // create instance 
