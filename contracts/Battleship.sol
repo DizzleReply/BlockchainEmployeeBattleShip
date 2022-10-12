@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.8.0;
 
+// SPDX-License-Identifier: MIT
+
 contract Battleship {
     // Players
-    address player1;
-    address player2;
+    address payable player1;
+    address payable player2;
 
     // CONSTANTS
     uint256 timePerMove;
@@ -36,25 +38,36 @@ contract Battleship {
     // Field
     bool[10][10] flags;
 
-    function createBoard(uint256 _timePerMove, address _player2) public {
+    // functions
+
+    function createBoard(uint256 _timePerMove, address payable _player2)
+        public
+    {
         timePerMove = _timePerMove;
         player1 = msg.sender;
         player2 = _player2;
         emit boardCreated(msg.sender, 10, timePerMove, player1, player2);
     }
 
-    function makeMoove() public {}
+    function makeMoove(uint256 x, uint256 y) public {
+        if (flags[x][y] == true) {
+            setMarked(x, y);
+        }
+    }
 
-    function setBomb(uint256 PositionX, uint256 PositionY) public {}
+    function setMarked(uint256 x, uint256 y) private {
+        flags[x][y] = true;
+    }
 
+    function createGame(address payable _player2) public {
+        player1 = msg.sender;
+        player2 = _player2;
+    }
+
+    // modifier
     modifier restricted() {
         require(true, "This function is restricted to the contract's owner");
         _;
-    }
-
-    function createGame(address _player2) public {
-        player1 = msg.sender;
-        player2 = _player2;
     }
 
     // Events
@@ -66,5 +79,5 @@ contract Battleship {
         address player2
     );
 
-    constructor() public {}
+    //constructor() public {}
 }
